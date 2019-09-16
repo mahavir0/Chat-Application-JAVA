@@ -10,7 +10,6 @@ class ClientSend extends Thread{
         try{
             while(true){
                 DataOutputStream dos=new DataOutputStream(socket.getOutputStream());
-                //System.out.print("Client Says : ");
                 Scanner sl=new Scanner(System.in);
                 String mes=sl.nextLine();
                 dos.writeUTF(mes);
@@ -42,14 +41,12 @@ public class Client{
 		try{
 			Socket socket=new Socket("localhost",3000);
   	 		System.out.println("client has been started");
-    		//System.out.println("waiting for server");
-            ClientRecieve receive=new ClientRecieve(socket);
-            ClientSend send=new ClientSend(socket);
-            receive.start();
-            send.start();
-			//socket.close();
-    	}catch(Exception e){
-
-    	}	
+            		ClientRecieve receive=new ClientRecieve(socket);
+            		ClientSend send=new ClientSend(socket);
+            		receive.start();
+            		send.start();
+    		}catch(Exception e){
+	    		e.printStackTrace();
+    		}	
 	}
 }
