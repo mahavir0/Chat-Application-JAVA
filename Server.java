@@ -11,7 +11,6 @@ class ServerSend extends Thread{
 			while(true){
 				DataOutputStream dos= new DataOutputStream(s.getOutputStream());
 				Scanner sl=new Scanner(System.in);
-				//System.out.print("Server Says : ");
 				String s1=sl.nextLine();
 				dos.writeUTF(s1);
 			}
@@ -48,8 +47,8 @@ class Server{
 			ServerRecieve recieve=new ServerRecieve(s);
 			send.start();
 			recieve.start();
-			//s.close();
 		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 }
